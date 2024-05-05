@@ -45,6 +45,13 @@ namespace NodeExercise
 
         }
 
+        public T Unqueue()
+        {
+            T value = head.Value;
+            head = head.Next;
+            return value;
+        }
+
 
 
 

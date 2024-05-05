@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\node_exercise\\node_exercise.csproj",
-      "projectName": "node_exercise",
-      "projectPath": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\node_exercise\\node_exercise.csproj",
+      "projectUniqueName": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\node_exercise\\NodeExercise.csproj",
+      "projectName": "NodeExercise",
+      "projectPath": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\node_exercise\\NodeExercise.csproj",
       "packagesPath": "C:\\Users\\almog\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\node_exercise\\obj\\",
       "projectStyle": "PackageReference",

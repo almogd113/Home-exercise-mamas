@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xipMYcMzBzUG/a3XPIOPKrtHS743sP2bFBLJxDdSpFFIw5EqQGCiZl2bgCEoEChFCjR85mh5AQDeh1sdekpthg==",
+  "dgSpecHash": "sPc1Sz0EoUopwL2hjKRD9BYxTnTKYjP4+Z7/IsrkQxFZfyeo+fRnPQXBGKglC6DLImAzEpZ6HqXJtiQZZ+qXHw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\node_exercise\\node_exercise.csproj",
+  "projectFilePath": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\node_exercise\\NodeExercise.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\almog\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.25\\microsoft.netcore.app.host.win-x64.3.1.25.nupkg.sha512"
   ],

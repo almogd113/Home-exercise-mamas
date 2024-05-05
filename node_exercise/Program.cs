@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace node_exercise
+namespace NodeExercise
 {
     class Program
     {

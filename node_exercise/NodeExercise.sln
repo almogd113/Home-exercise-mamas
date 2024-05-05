@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "node_exercise", "node_exercise.csproj", "{A1DBBF7F-C061-468E-95BE-694FA70920EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeExercise", "NodeExercise.csproj", "{A1DBBF7F-C061-468E-95BE-694FA70920EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

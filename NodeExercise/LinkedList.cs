@@ -5,14 +5,18 @@ using System.Text;
 
 namespace NodeExercise
 {
-    class LinkedList<T> : IEnumerable<int>
+    public class LinkedList<T>
     {
         public Node<int> head; // pointer to first node
         public Node<int> last; // pointer to the last node
+        private Node<int> min;
+        private Node<int> max;
         public LinkedList(Node<int> head)
         {
             this.head = head;
             last = this.head;
+            min = head;
+            max = head;
         }
 
         public void Append(int value)
@@ -21,6 +25,8 @@ namespace NodeExercise
             Node<int> node = new Node<int>(value);
             last.Next = node;
             last = last.Next;
+            this.SetMinNodeWhenAdding(node);
+            this.SetMaxNodeWhenAdding(node);
 
 
         }
@@ -30,6 +36,8 @@ namespace NodeExercise
             Node<int> node = new Node<int>(value);
             node.Next = head;
             head = node;
+            this.SetMinNodeWhenAdding(node);
+            this.SetMaxNodeWhenAdding(node);
         }
 
         public int Pop()
@@ -42,17 +50,27 @@ namespace NodeExercise
             {
                 pointer = pointer.Next;
             }
-
+            // set min if neccesary: 
+            SetMinWhenRemoving(pointer.Next);
+            // set max if neccesary: 
+            SetMaxWhenRemoving(pointer.Next);
             pointer.Next = null;
+
+
             return nodeValue;
 
         }
 
         public int Unqueue()
         {
-            int value = head.Value;
-            head = head.Next;
-            return value;
+            Node<int> originalHead = head;
+            this.head = originalHead.Next;
+            // set min if neccesary: 
+            SetMinWhenRemoving(originalHead);
+            // set max if neccesary: 
+            SetMaxWhenRemoving(originalHead);
+
+            return originalHead.Value;
         }
 
         public bool IsCircular()
@@ -60,6 +78,45 @@ namespace NodeExercise
             return last.Next != null;
         }
 
+        private void SetMinNodeWhenAdding(Node<int> node)
+        {
+            if (node.Value < min.Value)
+                min = node;
+        }
+
+        private void SetMaxNodeWhenAdding(Node<int> node)
+        {
+            if (node.Value > max.Value)
+                max = node;
+        }
+
+        private void SetMinWhenRemoving(Node<int> node)
+        {
+            if (min != node)
+                return;
+            Node<int> pointer = head;
+            min = head;
+            while (pointer != null)
+            {
+                if (pointer.Value < min.Value)
+                    min = pointer; // set min node
+                pointer = pointer.Next;
+            }
+        }
+
+        private void SetMaxWhenRemoving(Node<int> node)
+        {
+            if (max != node)
+                return;
+            Node<int> pointer = head;
+            max = head;
+            while (pointer != null)
+            {
+                if (pointer.Value > max.Value)
+                    max = pointer; // set min node
+                pointer = pointer.Next;
+            }
+        }
         Node<int> SortedMerge(Node<int> node1, Node<int> node2)
         {
             Node<int> result = null;
@@ -132,7 +189,7 @@ namespace NodeExercise
             return previousPointer;
         }
 
-        private void set_last_node()
+        private void SetLastNode()
         {
             Node<int> pointer = head;
             while (pointer.Next != null)
@@ -141,43 +198,34 @@ namespace NodeExercise
             }
             last = pointer;
         }
+
         public void Sort()
         {
             head = this.MergeSort(head);
-            this.set_last_node();
+            this.SetLastNode();
         }
 
         public Node<int> GetMaxNode()
         {
-            this.Sort();
-            return last;
+            return max;
         }
 
         public Node<int> GetMinNode()
         {
-            this.Sort();
-            return head;
+            return min;
         }
-        //public IEnumerable<int> ToList()
-        //{
-        //    return GetEnumerator();
-        //}
-
-        public IEnumerator<int> GetEnumerator()
+        public IEnumerable<int> ToList()
         {
+
             Node<int> current = head;
             while (current != null)
             {
                 yield return current.Value;
                 current = current.Next;
             }
-
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+
         // }
 
         // IEnumerator IEnumerable.GetEnumerator()

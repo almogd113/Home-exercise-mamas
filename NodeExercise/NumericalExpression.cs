@@ -6,10 +6,10 @@ namespace NodeExercise
 {
     public class NumericalExpression
     {
-        private long _number;
+        private ulong _number;
         private int _len;
         public string FullNumberExpression{ get; private set; }
-        public NumericalExpression(long number)
+        public NumericalExpression(ulong number)
         {
             _number = number;
             _len = (int)(Math.Log10(number) + 1);
@@ -52,19 +52,24 @@ namespace NodeExercise
             {
                 typeTens = 4;
             }
-            int calcTypeTens = (int)Math.Pow(10, typeTens - 1);
-            long numberProcess = _number;
-
-            for (int i = calcTypeTens; i >=1; i /= 1000)
+            //long calcTypeTens = (int)Math.Pow(10, typeTens - 1);
+            ulong calcTypeTens = 1;
+            for (int i = 0; i < typeTens; i++)
             {
-                int num = (int)numberProcess;
+                calcTypeTens *= 10;
+            }
+            ulong numberProcess = _number;
+
+            for (ulong i = calcTypeTens; i >=1; i /= 1000)
+            {
+                ulong num =numberProcess;
                 //if (i < 1000)
                 //{
                 //    num = (int)numberProcess % i; // for cases houndrands only
                 //}
                 if (i >= 1000)
                 {
-                    num = (int)numberProcess / i; //three digit number
+                    num = numberProcess / i; //three digit number
                 }
                 string numString = GetValueMatchThreeDigitsPattern(num, i);
                 FullNumberExpression += numString;
@@ -75,24 +80,31 @@ namespace NodeExercise
 
         }
 
-        private string GetValueMatchThreeDigitsPattern(int numberThreeDigits, long typeTens)
+        private string GetValueMatchThreeDigitsPattern(ulong numberThreeDigits, ulong typeTens)
         {
-            int firstDigit = numberThreeDigits / 100;
-            int secondDigit = numberThreeDigits % 100 / 10;
-            int thirdDigit = numberThreeDigits % 10;
+            int firstDigit = (int)numberThreeDigits / 100;
+            int secondDigit = (int) numberThreeDigits % 100 / 10;
+            int thirdDigit = (int)numberThreeDigits % 10;
+
+            if (firstDigit == 0 &&
+                secondDigit == 0 &&
+                thirdDigit == 0)
+                return "";
 
             string strNumber = "";
             string firstDigitStr = "";
             string secondDigitStr = "";
             string thirdDigitStr = "";
+
+            
             Expressions expressions = new Expressions();
             if (firstDigit != 0)
             {
-                firstDigitStr = expressions.OnesDict[firstDigit] + " " + expressions.MultiplerTensBaseAccordingToPlace[100] + " ";
+                firstDigitStr = expressions.OnesDict[firstDigit] + expressions.MultiplerTensBaseAccordingToPlace[100];
             }
 
             //in case there is unity
-            if (secondDigit != 0 && thirdDigit != 0) //that means there is no tens
+            if (secondDigit == 1 && thirdDigit != 0) //that means there is no tens
             {
                 secondDigitStr = expressions.TenToTwentyDict[secondDigit * 10 + thirdDigit];
             }
@@ -102,8 +114,8 @@ namespace NodeExercise
                 thirdDigitStr = expressions.OnesDict[thirdDigit];
             }
 
-
-            strNumber = firstDigitStr + " " + secondDigitStr + " " + thirdDigitStr + expressions.MultiplerTensBaseAccordingToPlace[typeTens];
+            
+            strNumber = firstDigitStr + secondDigitStr +  thirdDigitStr + expressions.MultiplerTensBaseAccordingToPlace[typeTens];
             return strNumber;
 
         }

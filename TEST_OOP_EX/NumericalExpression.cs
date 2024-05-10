@@ -8,11 +8,32 @@ namespace OOP_Exercise
     {
         private ulong _number;
         private int _len;
+
+        private Func<string> FullNumberWords;
+
+        private Func<int, string> UnitysTranslator;
+        private Func<int, string> TensTranslator;
+        private Func<int, string> TenToTwentyTranslator;
+        private Func<ulong, string> TensMultiplersByPositionInNumber;
         public string FullNumberExpression { get; private set; }
         public NumericalExpression(ulong number)
         {
             _number = number;
             _len = (int)(Math.Log10(number) + 1);
+
+            //default functions:
+            this.FullNumberWords = this.ExpressNumber;
+
+            //default functions - translators
+            Expressions expressions = new Expressions();
+            this.UnitysTranslator = expressions.UnitysTranslator;
+            this.TensTranslator = expressions.TensTranslator;
+            this.TenToTwentyTranslator = expressions.TenToTwentyTranslator;
+            this.TensMultiplersByPositionInNumber = expressions.TensMultiplersByPositionInNumber;
+        }
+        public void SetFullNumberWords(Func<string> numberExpressWords)
+        {
+            this.FullNumberWords = numberExpressWords;
         }
         public string ExpressNumber()
         {
@@ -49,19 +70,13 @@ namespace OOP_Exercise
             }
             return FullNumberExpression;
         }
-
-        //public string GetValue()
-        //{
-        //   return ToString();
-        //}
-    
         public override string ToString()
         {
-            return ExpressNumber();
+            return FullNumberWords();
         }
-        public string GetValue()
+        public ulong GetValue()
         {
-            return this.ToString();
+            return _number;
         }
         private string GetValueMatchThreeDigitsPattern(ulong numberThreeDigits, ulong typeTens)
         {
@@ -79,26 +94,51 @@ namespace OOP_Exercise
             string secondDigitStr = "";
             string thirdDigitStr = "";
 
+            ulong  hundrends = 100;
             Expressions expressions = new Expressions();
 
             if (firstDigit != 0)
             {
-                firstDigitStr = expressions.OnesDict[firstDigit] + expressions.MultiplerTensBaseAccordingToPlace[100];
+                firstDigitStr = this.UnitysTranslator(firstDigit) + this.TensMultiplersByPositionInNumber(hundrends);
+                //firstDigitStr = expressions.OnesDict[firstDigit] + expressions.MultiplerTensBaseAccordingToPlace[100];
             }
 
             //in case there is unity
             if (secondDigit == 1 && thirdDigit != 0) //that means there are no tens
             {
-                secondDigitStr = expressions.TenToTwentyDict[secondDigit * 10 + thirdDigit];
+                secondDigitStr = this.TenToTwentyTranslator(secondDigit * 10 + thirdDigit);
+                //secondDigitStr = expressions.TenToTwentyDict[secondDigit * 10 + thirdDigit];
             }
             else
             {
-                secondDigitStr = expressions.TensDict[secondDigit * 10]; //tens number
-                thirdDigitStr = expressions.OnesDict[thirdDigit]; //unity number
+                secondDigitStr =TensTranslator(secondDigit * 10); //tens number
+                thirdDigitStr = UnitysTranslator(thirdDigit); //unity number
             }
             string strNumber = firstDigitStr + secondDigitStr + thirdDigitStr +
-                                expressions.MultiplerTensBaseAccordingToPlace[typeTens]; //full 
+                               this.TensMultiplersByPositionInNumber(typeTens); //full 
             return strNumber;
         }
+        public static int SumLetters(ulong number)
+        {
+            NumericalExpression numericalExpression = new NumericalExpression(number);
+            Console.WriteLine(numericalExpression.ToString());
+            string expressedNumber = numericalExpression.ToString().Replace(" ", "");
+            int count = expressedNumber.Length;
+            if (number > 0)
+                return count + SumLetters(number - 1);
+            return count;
+        }
+
+        //overloading  - allows a class to have multiple methods with the same name but different parameters
+        //here, we have two methods that do the same thing but has different parameters.
+        public static int SumLetters(NumericalExpression numericalExpression)
+        {
+            string expressedNumber = numericalExpression.ToString().Replace(" ", "");
+            int count = expressedNumber.Length;
+            if (numericalExpression.GetValue() > 0)
+                return count + SumLetters(new NumericalExpression(numericalExpression.GetValue() - 1));
+            return count;
+        }
+
     }
 }

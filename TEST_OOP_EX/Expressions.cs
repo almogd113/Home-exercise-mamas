@@ -59,5 +59,29 @@ namespace OOP_Exercise
             MultiplerTensBaseAccordingToPlace.Add(1000000000000000, "biliards ");
             MultiplerTensBaseAccordingToPlace.Add(1000000000000000000, "trillions ");
         }
+
+        public string UnitysTranslator(int num)
+        {
+            return this.OnesDict[num];
+        }
+
+        public string TensTranslator(int num)
+        {
+            return this.TensDict[num];
+
+        }
+
+        public string TenToTwentyTranslator(int num)
+        {
+            return this.TenToTwentyDict[num];
+        }
+
+
+        public string TensMultiplersByPositionInNumber(ulong num)
+        {
+            return this.MultiplerTensBaseAccordingToPlace[num];
+
+        }
+
     }
 }

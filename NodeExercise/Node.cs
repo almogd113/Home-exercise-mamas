@@ -6,8 +6,20 @@ namespace NodeExercise
 {
     public class Node<T>
     {
-        public T Value{ get; set; }
-        public Node<T> Next{ get; set; }
+        public int Value{ get; set; }
+        public Node<int> Next { get; set; }
+
+        public Node(int value)
+        {
+            Value = value;
+            Next = null;
+        }
+
+        public Node(int value, Node<int> next)
+        {
+            Value = value;
+            Next = next;
+        }
 
     }
 }

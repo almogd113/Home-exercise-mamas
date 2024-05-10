@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\node_exercise\\NodeExercise.csproj",
+      "projectUniqueName": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\NodeExercise\\NodeExercise.csproj",
       "projectName": "NodeExercise",
-      "projectPath": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\node_exercise\\NodeExercise.csproj",
+      "projectPath": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\NodeExercise\\NodeExercise.csproj",
       "packagesPath": "C:\\Users\\almog\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\node_exercise\\obj\\",
+      "outputPath": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\NodeExercise\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\almog\\AppData\\Roaming\\NuGet\\NuGet.Config",

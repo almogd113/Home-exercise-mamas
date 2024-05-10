@@ -8,45 +8,23 @@ namespace NodeExercise
     {
         private ulong _number;
         private int _len;
-        public string FullNumberExpression{ get; private set; }
+        private string _fullNumberExpression;
+        private Expressions _expressions;
         public NumericalExpression(ulong number)
         {
+            _fullNumberExpression = "";
+            _expressions = new Expressions();
             _number = number;
             _len = (int)(Math.Log10(number) + 1);
         }
-        public string GetValue()
+        public void expressNumber()
         {
-
-            //long numberToProcess = _number;
-            //int baseToTenMultyplers = _len;
-            //while (baseToTenMultyplers % 3 != 1)
-            //    baseToTenMultyplers++;
-            //int maxBase = (int)Math.Pow(10, baseToTenMultyplers - 1);
-
-            //for (int i = maxBase; i >= 1; i /= 1000)
-            //{
-            //    int num = (int)numberToProcess;
-            //    //if (i < 1000)
-            //    //{
-            //    //    num = (int)numberToProcess % i; // for cases houndrands only
-            //    //}
-            //    if (i >= 1000)
-            //    {
-            //        num = (int)numberToProcess / i; //three digit number
-            //    }
-            //    string numString = GetValueMatchThreeDigitsPattern(num, i);
-            //    numberToProcess %= i;
-            //    FullNumberExpression += numString;
-            //}
-
-            //return FullNumberExpression;
-
             //int numberInTens = (int)Math.Pow(10, _len - 1);
             int typeTens = _len;
             if (_len > 6) //not hundrends
             {
                 while (typeTens % 3 != 0)
-                    typeTens--;
+                    typeTens--; //find the type of the trio by position in number
             }
             if (_len <= 6 &&  _len >= 4)
             {
@@ -56,32 +34,41 @@ namespace NodeExercise
             ulong calcTypeTens = 1;
             for (int i = 0; i < typeTens; i++)
             {
-                calcTypeTens *= 10;
+                calcTypeTens *= 10; //calc the max number in this type 
             }
-            ulong numberProcess = _number;
+            ulong numberProcess = _number; 
 
+            //run on every trio, express the number and determine which type of number by position in full number
             for (ulong i = calcTypeTens; i >=1; i /= 1000)
             {
                 ulong num =numberProcess;
-                //if (i < 1000)
-                //{
-                //    num = (int)numberProcess % i; // for cases houndrands only
-                //}
-                if (i >= 1000)
+                if (i >= 1000) //trio calc
                 {
                     num = numberProcess / i; //three digit number
                 }
                 string numString = GetValueMatchThreeDigitsPattern(num, i);
-                FullNumberExpression += numString;
-                numberProcess %= i;
+                _fullNumberExpression += numString;
+                numberProcess %= i; //moving to the next trio
             }
-            return FullNumberExpression;
-
-
+  
         }
 
+        //public string GetValue()
+        //{
+        //   return ToString();
+        //}
+        public override string ToString()
+        {
+           this.expressNumber();
+            return _fullNumberExpression;
+        }
+        public string GetValue()
+        {
+             return this.ToString();
+        }
         private string GetValueMatchThreeDigitsPattern(ulong numberThreeDigits, ulong typeTens)
         {
+            //calc digits
             int firstDigit = (int)numberThreeDigits / 100;
             int secondDigit = (int) numberThreeDigits % 100 / 10;
             int thirdDigit = (int)numberThreeDigits % 10;
@@ -91,34 +78,40 @@ namespace NodeExercise
                 thirdDigit == 0)
                 return "";
 
-            string strNumber = "";
             string firstDigitStr = "";
             string secondDigitStr = "";
             string thirdDigitStr = "";
 
-            
-            Expressions expressions = new Expressions();
             if (firstDigit != 0)
             {
-                firstDigitStr = expressions.OnesDict[firstDigit] + expressions.MultiplerTensBaseAccordingToPlace[100];
+                firstDigitStr = _expressions.OnesDict[firstDigit] + _expressions.MultiplerTensBaseAccordingToPlace[100];
             }
 
             //in case there is unity
-            if (secondDigit == 1 && thirdDigit != 0) //that means there is no tens
+            if (secondDigit == 1 && thirdDigit != 0) //that means there are no tens
             {
-                secondDigitStr = expressions.TenToTwentyDict[secondDigit * 10 + thirdDigit];
+                secondDigitStr = _expressions.TenToTwentyDict[secondDigit * 10 + thirdDigit];
             }
             else
             {
-                secondDigitStr = expressions.TensDict[secondDigit*10];
-                thirdDigitStr = expressions.OnesDict[thirdDigit];
+                secondDigitStr = _expressions.TensDict[secondDigit*10]; //tens number
+                thirdDigitStr = _expressions.OnesDict[thirdDigit]; //unity number
             }
-
-            
-            strNumber = firstDigitStr + secondDigitStr +  thirdDigitStr + expressions.MultiplerTensBaseAccordingToPlace[typeTens];
+            string strNumber = firstDigitStr + secondDigitStr +  thirdDigitStr + 
+                _expressions.MultiplerTensBaseAccordingToPlace[typeTens]; //full 
             return strNumber;
-
         }
+
+        //public static int SumLetters(ulong number)
+        //{
+        //    NumericalExpression numericalExpression = new NumericalExpression(number);
+        //    string str = numericalExpression.GetValue();
+        //    Console.WriteLine(str);
+        //   int count = numericalExpression.GetValue().Trim().Length;
+        //    if (number > 0)
+        //        return count + SumLetters(number - 1);
+        //    return count;
+        //}
 
     }
 }

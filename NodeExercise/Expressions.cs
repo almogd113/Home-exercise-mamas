@@ -58,9 +58,6 @@ namespace NodeExercise
             MultiplerTensBaseAccordingToPlace.Add(1000000000000, "billions ");
             MultiplerTensBaseAccordingToPlace.Add(1000000000000000, "biliards ");
             MultiplerTensBaseAccordingToPlace.Add(1000000000000000000, "trillions ");
-
-
-
         }
     }
 }

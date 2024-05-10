@@ -12,3 +12,17 @@ C:\Users\almog\source\repos\Home-exercise-mamas\node_exercise\obj\Debug\netcorea
 C:\Users\almog\source\repos\Home-exercise-mamas\node_exercise\obj\Debug\netcoreapp3.1\NodeExercise.dll
 C:\Users\almog\source\repos\Home-exercise-mamas\node_exercise\obj\Debug\netcoreapp3.1\NodeExercise.pdb
 C:\Users\almog\source\repos\Home-exercise-mamas\node_exercise\obj\Debug\netcoreapp3.1\NodeExercise.genruntimeconfig.cache
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\bin\Debug\netcoreapp3.1\NodeExercise.exe
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\bin\Debug\netcoreapp3.1\NodeExercise.deps.json
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\bin\Debug\netcoreapp3.1\NodeExercise.runtimeconfig.json
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\bin\Debug\netcoreapp3.1\NodeExercise.runtimeconfig.dev.json
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\bin\Debug\netcoreapp3.1\NodeExercise.dll
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\bin\Debug\netcoreapp3.1\NodeExercise.pdb
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\obj\Debug\netcoreapp3.1\NodeExercise.csproj.AssemblyReference.cache
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\obj\Debug\netcoreapp3.1\NodeExercise.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\obj\Debug\netcoreapp3.1\NodeExercise.AssemblyInfoInputs.cache
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\obj\Debug\netcoreapp3.1\NodeExercise.AssemblyInfo.cs
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\obj\Debug\netcoreapp3.1\NodeExercise.csproj.CoreCompileInputs.cache
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\obj\Debug\netcoreapp3.1\NodeExercise.dll
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\obj\Debug\netcoreapp3.1\NodeExercise.pdb
+C:\Users\almog\source\repos\Home-exercise-mamas\NodeExercise\obj\Debug\netcoreapp3.1\NodeExercise.genruntimeconfig.cache

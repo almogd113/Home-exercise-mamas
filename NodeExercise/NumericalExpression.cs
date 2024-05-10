@@ -102,16 +102,14 @@ namespace NodeExercise
             return strNumber;
         }
 
-        //public static int SumLetters(ulong number)
-        //{
-        //    NumericalExpression numericalExpression = new NumericalExpression(number);
-        //    string str = numericalExpression.GetValue();
-        //    Console.WriteLine(str);
-        //   int count = numericalExpression.GetValue().Trim().Length;
-        //    if (number > 0)
-        //        return count + SumLetters(number - 1);
-        //    return count;
-        //}
+        public static int SumLetters(ulong number)
+        {
+            NumericalExpression numericalExpression = new NumericalExpression(number);
+            int count = numericalExpression.GetValue().Trim().Length;
+            if (number > 0)
+                return count + SumLetters(number - 1);
+            return count;
+        }
 
     }
 }

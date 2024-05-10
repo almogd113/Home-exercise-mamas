@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ToDMlWfz/TRwABzdmnUr/O8wY8+vvcON6LIEeg+oryCDaj35fruVmIncnahq1BkXAo8DRKUrmcwRu2aS98pQMg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\NodeExercise\\NodeExercise.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\almog\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.25\\microsoft.netcore.app.host.win-x64.3.1.25.nupkg.sha512"
+  ],
+  "logs": []
+}

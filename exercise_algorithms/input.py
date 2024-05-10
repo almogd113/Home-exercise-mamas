@@ -24,38 +24,3 @@ def validate_input(prompt: str) -> float:
         print(f'Could not except {user_number} as number')
 
         continue
-
-
-# print(validate_input("enter"))
-# no_existence_substring = -1
-# if user_number.isnumeric():
-# return float(user_number)
-# if user_number.find("-.") != no_existence_substring:
-# raise Exception('Could not except using -. format as a number')
-# try:
-# num = user_number.replace(".", "", 1)
-# int(num)
-# except ValueError:
-# print(f'Could not except {user_number} as number')
-#
-# try:
-# int(num.replace("-", "", 1))
-# except ValueError:
-# print(f'Could not except {user_number} as number')
-
-
-# num = ""
-# if user_number.strip("-.")
-# try:
-#     num = user_number.replace(".", "", 1)
-#     int(num)
-# except ValueError:
-#
-# try:
-#    num = int(num.replace("-", "", 1))
-#
-# except ValueError:
-#     print(f'Could not except {user_number} as number')
-
-
-# print(validate_input("enter number: "))

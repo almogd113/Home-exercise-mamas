@@ -59,10 +59,10 @@ namespace OOP_Exercise
         {
             return ExpressNumber();
         }
-        //public string GetValue()
-        //{
-        //    return this.ToString();
-        //}
+        public string GetValue()
+        {
+            return this.ToString();
+        }
         private string GetValueMatchThreeDigitsPattern(ulong numberThreeDigits, ulong typeTens)
         {
             //calc digits

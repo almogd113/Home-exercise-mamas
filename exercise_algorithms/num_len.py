@@ -1,4 +1,5 @@
 import math
+from validation_input import validate_input_int
 
 
 def num_len(number: int) -> int:
@@ -11,4 +12,5 @@ def num_len(number: int) -> int:
     return int(math.log10(number) + 1)
 
 
-print(num_len(1))
+number = validate_input_int("enter number to check len: ")
+print("the length of the number is: " + str(num_len(number)))

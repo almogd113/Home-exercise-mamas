@@ -31,4 +31,6 @@ def is_sorted_polyndrom(my_str: str) -> bool:
     return check_second_half_order and check_first_half_order
 
 
-print(is_sorted_polyndrom("aba"))
+# print(is_sorted_polyndrom("aba"))
+string_to_check_palindrome = input("enter word to check sorted palindrome: ")
+print(is_sorted_polyndrom(string_to_check_palindrome))

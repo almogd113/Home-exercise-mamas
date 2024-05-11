@@ -1,7 +1,18 @@
-import re
+def is_int(number: str) -> bool:
+    try:
+        int(number)
+        return True
+    except ValueError:
+        print(f'Could not convert {number} to int')
+        return False
 
-RED = '\033[31m'
-RESET = '\033[0m'
+
+def validate_input_int(prompt: str) -> int:
+    while True:
+        user_number = input(prompt)
+        if not is_int(user_number):
+            continue
+        return int(user_number)
 
 
 def is_float(user_number: str) -> bool:
@@ -13,7 +24,7 @@ def is_float(user_number: str) -> bool:
         return False
 
 
-def validate_input(prompt: str) -> float:
+def validate_input_float(prompt: str) -> float:
     while True:
         user_number = input(prompt)
         updated_number_dot = user_number.replace('.', '', 1)

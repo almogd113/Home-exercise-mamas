@@ -6,17 +6,17 @@ matplotlib.use('TkAgg')
 
 import matplotlib.pyplot as plt
 import numpy as np
-from input import validate_input
+from validation_input import validate_input_float
 from typing import List
 from scipy.stats import pearsonr
 
 
 def get_user_numbers() -> [float]:
-    user_number = validate_input("enter number please: ")
+    user_number = validate_input_float("enter number please: ")
     numbers_list: [float] = []
     while user_number != -1:
         numbers_list.append(user_number)
-        user_number = validate_input("enter number please: ")
+        user_number = validate_input_float("enter number please: ")
     return numbers_list
 
 

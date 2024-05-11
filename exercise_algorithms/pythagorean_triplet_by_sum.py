@@ -1,5 +1,5 @@
 import math
-import random
+from validation_input import validate_input_int
 
 
 def pythagorean_triplet_by_sum(my_sum: int) -> None:
@@ -30,4 +30,5 @@ def pythagorean_triplet_by_sum(my_sum: int) -> None:
         print("There are no Pythagorean triples for this sum")
 
 
-pythagorean_triplet_by_sum(48)
+sum_to_check = validate_input_int("enter sum to get Pythagorean triples: ")
+pythagorean_triplet_by_sum(sum_to_check)

@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a9340dc-e8eb-4737-aa50-fa6fb7c4bff2" name="Changes" comment="" />
+    <list default="true" id="9a9340dc-e8eb-4737-aa50-fa6fb7c4bff2" name="Changes" comment="clean code">
+      <change afterPath="$PROJECT_DIR$/exercise_algorithms/validation_input.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercise_algorithms/input.py" beforeDir="false" afterPath="$PROJECT_DIR$/exercise_algorithms/input.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercise_algorithms/is_sorted_polyndrom.py" beforeDir="false" afterPath="$PROJECT_DIR$/exercise_algorithms/is_sorted_polyndrom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercise_algorithms/num_len.py" beforeDir="false" afterPath="$PROJECT_DIR$/exercise_algorithms/num_len.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercise_algorithms/numbers_sequence_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/exercise_algorithms/numbers_sequence_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercise_algorithms/pythagorean_triplet_by_sum.py" beforeDir="false" afterPath="$PROJECT_DIR$/exercise_algorithms/pythagorean_triplet_by_sum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercise_algorithms/reverse_n_pi_digits.py" beforeDir="false" afterPath="$PROJECT_DIR$/exercise_algorithms/reverse_n_pi_digits.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;almogd113&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/almogd113/Home-exercise-mamas.git&quot;,
+    &quot;accountId&quot;: &quot;8ef77537-29d0-4405-b8c6-7ad66343491b&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2g2eCxC5qkm6ME2JHpmM96tLjMG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -21,10 +53,163 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.input (1).executor": "Run",
+    "Python.input.executor": "Run",
+    "Python.is_sorted_polyndrom (1).executor": "Run",
+    "Python.is_sorted_polyndrom.executor": "Run",
+    "Python.num_len.executor": "Run",
+    "Python.numbers_sequence_functions (1).executor": "Run",
+    "Python.numbers_sequence_functions.executor": "Run",
+    "Python.pythagorean_triplet_by_sum.executor": "Run",
+    "Python.reverse_n_pi_digits (1).executor": "Run",
+    "Python.reverse_n_pi_digits.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master"
   }
 }]]></component>
+  <component name="RunManager" selected="Python.num_len">
+    <configuration name="input (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="algorithms" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exercise_algorithms" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exercise_algorithms/input.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="is_sorted_polyndrom (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="algorithms" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exercise_algorithms" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exercise_algorithms/is_sorted_polyndrom.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="is_sorted_polyndrom" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="algorithms" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exerices_algorithms" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exerices_algorithms/is_sorted_polyndrom.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="num_len" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="algorithms" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exercise_algorithms" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exercise_algorithms/num_len.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="numbers_sequence_functions (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="algorithms" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exercise_algorithms" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exercise_algorithms/numbers_sequence_functions.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="reverse_n_pi_digits (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="algorithms" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exercise_algorithms" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exercise_algorithms/reverse_n_pi_digits.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.num_len" />
+        <item itemvalue="Python.is_sorted_polyndrom (1)" />
+        <item itemvalue="Python.reverse_n_pi_digits (1)" />
+        <item itemvalue="Python.numbers_sequence_functions (1)" />
+        <item itemvalue="Python.input (1)" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -41,6 +226,128 @@
       <option name="presentableId" value="Default" />
       <updated>1714899975892</updated>
     </task>
+    <task id="LOCAL‎-00001" summary="initiale commit - algorithms">
+      <option name="closed" value="true" />
+      <created>1714900075660</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL‎-00001" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1714900075660</updated>
+    </task>
+    <task id="LOCAL‎-00002" summary="num len code - works">
+      <option name="closed" value="true" />
+      <created>1714901282487</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL‎-00002" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1714901282487</updated>
+    </task>
+    <task id="LOCAL‎-00003" summary="pythagorean_triplet_by_sum.py code - works">
+      <option name="closed" value="true" />
+      <created>1714904838214</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL‎-00003" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1714904838214</updated>
+    </task>
+    <task id="LOCAL‎-00004" summary="is_sorted_polyndrom.py.py code - works&#10;added function to check if a string is sorted palindrome">
+      <option name="closed" value="true" />
+      <created>1714909911940</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL‎-00004" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1714909911940</updated>
+    </task>
+    <task id="LOCAL‎-00005" summary="added numbers_sequence_functions.py, the get_user_numbers  (input doesn't work as i want) the other functions: average, plot and count positive works good">
+      <option name="closed" value="true" />
+      <created>1714921294048</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL‎-00005" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1714921294049</updated>
+    </task>
+    <task id="LOCAL‎-00006" summary="added reverse_n_pi_digits.py used str conversion to handle the problem with indexes">
+      <option name="closed" value="true" />
+      <created>1714923284348</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL‎-00006" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1714923284348</updated>
+    </task>
+    <task id="LOCAL‎-00007" summary="fixed directory name">
+      <option name="closed" value="true" />
+      <created>1714926389072</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL‎-00007" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1714926389072</updated>
+    </task>
+    <task id="LOCAL‎-00008" summary="fixed the input validation.&#10;fixed the diagram and added pearsonr print. &#10;added prints of each function">
+      <option name="closed" value="true" />
+      <created>1715353055311</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL‎-00008" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1715353055311</updated>
+    </task>
+    <task id="LOCAL‎-00009" summary="clean code">
+      <option name="closed" value="true" />
+      <created>1715353193331</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL‎-00009" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1715353193331</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initiale commit - algorithms" />
+    <MESSAGE value="num len code - works" />
+    <MESSAGE value="pythagorean_triplet_by_sum.py code - works" />
+    <MESSAGE value="is_sorted_polyndrom.py.py code - works&#10;added function to check if a string is sorted palindrome" />
+    <MESSAGE value="added numbers_sequence_functions.py, the get_user_numbers  (input doesn't work as i want) the other functions: average, plot and count positive works good" />
+    <MESSAGE value="added reverse_n_pi_digits.py used str conversion to handle the problem with indexes" />
+    <MESSAGE value="fixed directory name" />
+    <MESSAGE value="fixed the input validation.&#10;fixed the diagram and added pearsonr print. &#10;added prints of each function" />
+    <MESSAGE value="clean code" />
+    <option name="LAST_COMMIT_MESSAGE" value="clean code" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/exercise_algorithms/is_sorted_polyndrom.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/exercise_algorithms/is_sorted_polyndrom.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/exercise_algorithms/reverse_n_pi_digits.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/exercise_algorithms/numbers_sequence_functions.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

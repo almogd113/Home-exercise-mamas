@@ -1,4 +1,5 @@
 import math
+from validation_input import validate_input_int
 
 
 def reverse_n_pi_digits(n: int) -> str:
@@ -9,4 +10,5 @@ def reverse_n_pi_digits(n: int) -> str:
     return n_first_pi_digits[::-1]
 
 
-print(reverse_n_pi_digits(3))
+n = validate_input_int("enter number of pi digits to display reversed: ")
+print(f"the {n} numbers of pi reversed: " + reverse_n_pi_digits(n))

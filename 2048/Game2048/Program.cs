@@ -6,7 +6,9 @@ namespace Game2048
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            logic.Board board = new logic.Board();
+            board.Initalize();
+
         }
     }
 }

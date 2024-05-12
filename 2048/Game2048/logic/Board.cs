@@ -10,6 +10,8 @@ namespace Game2048.logic
         private const int Size = 4;
         private int _pointPreMovement;
         private List<Pos> _emptyCellsPosition;
+        public Pos MaxValueCellPos
+        { get; private set; }
         public int[,] Data
         { get; protected set; }
 
@@ -19,9 +21,17 @@ namespace Game2048.logic
             _pointPreMovement = 0;
             _emptyCellsPosition = new List<Pos>();
             GetEmptyCells();
+            MaxValueCellPos = new Pos(0, 0); //init 
 
         }
-
+        public Board(Board board)
+        {
+            Data = board.Data;
+            _pointPreMovement = board._pointPreMovement;
+            _emptyCellsPosition = board._emptyCellsPosition;
+            MaxValueCellPos = board.MaxValueCellPos;
+            
+        }
         public void Initalize()
         {
             //initalize two random empty cells with values: 2 or 4
@@ -35,7 +45,9 @@ namespace Game2048.logic
             SetValueRandomCell();
             SetValueRandomCell();
             SetValueRandomCell();
-       
+            SetValueRandomCell();
+            SetValueRandomCell();
+
         }
 
         public void SetValueRandomCell()
@@ -51,6 +63,8 @@ namespace Game2048.logic
 
             //set cell value
             Data[cellToSet.Row, cellToSet.Col] = rndCellValue;
+            MaxValueCellPos = rndCellValue > GetCellValue(MaxValueCellPos) ? cellToSet : MaxValueCellPos;
+
 
         }
 
@@ -80,7 +94,12 @@ namespace Game2048.logic
 
         }
 
-        private int GetCellValue(Pos cell)
+        public int GetNumberEmptyCells()
+        {
+            return _emptyCellsPosition.Count;
+        }
+
+        public int GetCellValue(Pos cell)
         {
             return Data[cell.Row, cell.Col];
         }
@@ -102,7 +121,8 @@ namespace Game2048.logic
         public int Move(Direction direction)
         {
             int pointsForMove = direction == Direction.Up || direction == Direction.Down ? MoveVertically(direction) : MoveHorizantlly(direction);
-            SetValueRandomCell();
+            if(GetNumberEmptyCells() > 0)
+                SetValueRandomCell();
             return pointsForMove;
         }
 
@@ -146,6 +166,18 @@ namespace Game2048.logic
 
         }
 
+        public bool IsBoardIdentical(Board boardToCompare)
+        {
+            for (int i = 0; i < this.Data.GetLength(0); i++)
+            {
+                for (int j = 0; j < this.Data.GetLength(1); j++)
+                {
+                    if (boardToCompare.Data[i, j] != this.Data[i, j])
+                        return false;
+                }
+            }
+            return true;
+        }
         public int MoveHorizantlly(Direction direction)
         {
             //init merge:
@@ -310,6 +342,7 @@ namespace Game2048.logic
                         int valueCellMerged = GetCellValue(cellToMergeValue);
                         AddCellToEmptyCellsList(cellToEmptyValue);
                         _pointPreMovement += valueCellMerged;
+                        MaxValueCellPos = valueCellMerged > GetCellValue(MaxValueCellPos) ? cellToMergeValue : MaxValueCellPos;
                     }
 
                 }
@@ -361,6 +394,8 @@ namespace Game2048.logic
                         this.MergeCells(cellToMergeValue, cellToEmptyValue);
                         int valueCellMerged = GetCellValue(cellToMergeValue);
                         _pointPreMovement += valueCellMerged;
+                        MaxValueCellPos = valueCellMerged > GetCellValue(MaxValueCellPos) ? cellToMergeValue : MaxValueCellPos;
+
 
                     }
 

@@ -15,7 +15,7 @@ namespace Game2048.Logic
         public int Points
         { get; protected set; }
 
-        public int winCellValue = 32;
+        public int winCellValue = 64;
         public Game()
         {
             // initialize game data members

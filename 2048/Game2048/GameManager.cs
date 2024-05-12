@@ -6,43 +6,28 @@ namespace Game2048
 {
     public class GameManager
     {
-        private Logic.Game _game;
-        private UI.ConsoleGame _consoleGame;
+        public Logic.Game Game
+        { get; private set; }
+        public UI.ConsoleGame ConsoleGame
+        { get; private set; }
 
         public GameManager()
         {
-            _game = new Logic.Game();
-            _consoleGame = new UI.ConsoleGame(_game);
+            Game = new Logic.Game();
+            ConsoleGame = new UI.ConsoleGame(Game);
 
         }
 
-        public void ManageGame()
-        {
-            _consoleGame.StartMessage();
-            ConsoleKeyInfo input = _consoleGame.ValidateInitInput();
-
-            switch(input.Key)
-            {
-                case ConsoleKey.Enter:
-                    Console.WriteLine("Goodbye...");
-                    return;
-                case ConsoleKey.Spacebar:
-                    StartGame();
-                    ManageGame();
-                    break;
-                default:
-                    return;
-            }
-        }
+       
         public void StartGame()
         {
-            _consoleGame.DisplayBoard(); //display the init board data
-            while (_game.GameStatus == Logic.GameStatus.Idle)
+            ConsoleGame.DisplayBoard(); //display the init board data
+            while (Game.GameStatus == Logic.GameStatus.Idle)
             {
-                ConsoleKeyInfo userKey = _consoleGame.ValidateUserKeyInput();
+                ConsoleKeyInfo userKey = ConsoleGame.ValidateUserKeyInput();
                 Logic.Direction userDirection = GetDirectionByKey(userKey);
-                _game.Move(userDirection);
-                _consoleGame.DisplayBoard();
+                Game.Move(userDirection);
+                ConsoleGame.DisplayBoard();
             }
             FinalGameStatus();
             
@@ -51,16 +36,16 @@ namespace Game2048
         
         public void FinalGameStatus()
         {
-            switch(_game.GameStatus)
+            switch(Game.GameStatus)
             {
                 case Logic.GameStatus.Win:
-                    _consoleGame.WinMessage();
+                    ConsoleGame.WinMessage();
                     break;
                 case Logic.GameStatus.Lose:
-                    _consoleGame.LoseMessage();
+                    ConsoleGame.LoseMessage();
                     break;
                 default:
-                    _consoleGame.LoseMessage();
+                    ConsoleGame.LoseMessage();
                     break;
             }
         }

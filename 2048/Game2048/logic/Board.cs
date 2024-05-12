@@ -38,17 +38,6 @@ namespace Game2048.Logic
             //initalize two random empty cells with values: 2 or 4
             SetValueRandomCell();
             SetValueRandomCell();
-            SetValueRandomCell();
-            SetValueRandomCell();
-            SetValueRandomCell();
-            SetValueRandomCell();
-            SetValueRandomCell();
-            SetValueRandomCell();
-            SetValueRandomCell();
-            SetValueRandomCell();
-            SetValueRandomCell();
-            SetValueRandomCell();
-
         }
 
         public void SetValueRandomCell()
@@ -65,8 +54,6 @@ namespace Game2048.Logic
             //set cell value
             Data[cellToSet.Row, cellToSet.Col] = rndCellValue;
             MaxValueCellPos = rndCellValue > GetCellValue(MaxValueCellPos) ? cellToSet : MaxValueCellPos;
-
-
         }
 
         public void RemoveCellFromEmptyCellsList(int row, int col)
@@ -118,12 +105,13 @@ namespace Game2048.Logic
 
         }
 
-        ////move functions:
+        //move functions:
         public int Move(Direction direction)
         {
             int pointsForMove = direction == Direction.Up || direction == Direction.Down ? MoveVertically(direction) : MoveHorizantlly(direction);
             if(GetNumberEmptyCells() > 0)
                 SetValueRandomCell();
+            _pointPreMovement = 0;
             return pointsForMove;
         }
 

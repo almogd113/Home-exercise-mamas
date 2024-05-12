@@ -9,7 +9,7 @@ namespace Game2048.logic
         private const int EmptyCellValue = 0;
         private const int Size = 4;
         private int _pointPreMovement;
-        private List<Cell> _emptyCellsPosition;
+        private List<Pos> _emptyCellsPosition;
         public int[,] Data
         { get; protected set; }
 
@@ -17,7 +17,7 @@ namespace Game2048.logic
         {
             this.Data = new int[Size, Size];
             _pointPreMovement = 0;
-            _emptyCellsPosition = new List<Cell>();
+            _emptyCellsPosition = new List<Pos>();
             GetEmptyCells();
 
         }
@@ -48,7 +48,7 @@ namespace Game2048.logic
             int rndCellIndex = this.GetRandomEmptyCellIndex();
 
             //remove cell from empty cells list
-            Cell cellToSet = _emptyCellsPosition[rndCellIndex];
+            Pos cellToSet = _emptyCellsPosition[rndCellIndex];
             RemoveCellFromEmptyCellsList(cellToSet.Row, cellToSet.Col);
 
             //set cell value
@@ -58,7 +58,7 @@ namespace Game2048.logic
 
         public void RemoveCellFromEmptyCellsList(int row, int col)
         {
-            foreach (Cell item in _emptyCellsPosition)
+            foreach (Pos item in _emptyCellsPosition)
             {
                 if (item.Row == row && item.Col == col)
                 {
@@ -68,7 +68,7 @@ namespace Game2048.logic
             }
         }
 
-        public void AddCellToEmptyCellsList(Cell cell)
+        public void AddCellToEmptyCellsList(Pos cell)
         {
             _emptyCellsPosition.Add(cell);
         }
@@ -82,7 +82,7 @@ namespace Game2048.logic
 
         }
 
-        private int GetCellValue(Cell cell)
+        private int GetCellValue(Pos cell)
         {
             return Data[cell.Row, cell.Col];
         }
@@ -94,7 +94,7 @@ namespace Game2048.logic
                 for (int j = 0; j < Data.GetLength(1); j++)
                 {
                     if (Data[i, j] == EmptyCellValue)
-                        _emptyCellsPosition.Add(new Cell(i, j));
+                        _emptyCellsPosition.Add(new Pos(i, j));
                 }
             }
 
@@ -133,8 +133,8 @@ namespace Game2048.logic
                 for (int col = 0; col < Data.GetLength(0); col += 1)
                 {
 
-                    Cell firstEmptyCell = GetFirstEmptyCellInCol(col,direction);
-                    Cell firstValuedCell = GetFirstValuedCellInCol(col, row, direction);
+                    Pos firstEmptyCell = GetFirstEmptyCellInCol(col,direction);
+                    Pos firstValuedCell = GetFirstValuedCellInCol(col, row, direction);
                     if ((firstValuedCell.Row != -1 && firstValuedCell.Col != -1) &&
                         (firstEmptyCell.Row >= 0 && firstEmptyCell.Row < Data.GetLength(0)))
                     {
@@ -150,13 +150,13 @@ namespace Game2048.logic
             return _pointPreMovement;
 
         }
-        private Cell GetFirstEmptyCellInCol(int col, Direction direction)
+        private Pos GetFirstEmptyCellInCol(int col, Direction direction)
         {
             //for Up
             int prevValueRowUp = 4; // default to start running on the list , does not exist
             //for Down
             int prevValueRowDown = -1; //default to start running on the list , does not exist
-            foreach (Cell item in _emptyCellsPosition)
+            foreach (Pos item in _emptyCellsPosition)
             {
                 if (item.Col == col)
                 {
@@ -164,14 +164,14 @@ namespace Game2048.logic
                     prevValueRowDown = item.Row > prevValueRowDown ? item.Row : prevValueRowDown;
                 }
             }
-            Cell minEmptyCell = new Cell(prevValueRowUp, col);
-            Cell maxEmptyCell = new Cell(prevValueRowDown, col);
+            Pos minEmptyCell = new Pos(prevValueRowUp, col);
+            Pos maxEmptyCell = new Pos(prevValueRowDown, col);
             if(direction == Direction.Up)
                 return minEmptyCell;
             return maxEmptyCell;
         }
 
-        private Cell GetFirstValuedCellInCol(int col, int initRow, Direction direction)
+        private Pos GetFirstValuedCellInCol(int col, int initRow, Direction direction)
         {
             int coefficient = direction == Direction.Up ? 1 : -1;
 
@@ -180,12 +180,12 @@ namespace Game2048.logic
                 row += coefficient)
             {
                 if (Data[row, col] != EmptyCellValue)
-                    return new Cell(row, col);
+                    return new Pos(row, col);
             }
 
-            return new Cell(-1, -1); //does not exist
+            return new Pos(-1, -1); //does not exist
         }
-        private bool canMove(Cell current, Cell next)
+        private bool canMove(Pos current, Pos next)
         {
             //check if there is an empty cell to move the next cell.
             return Data[current.Row, current.Col] == EmptyCellValue && Data[next.Row, next.Col] != EmptyCellValue;
@@ -205,25 +205,25 @@ namespace Game2048.logic
             {
                 for (int col = 0; col < Data.GetLength(0); col += 1)
                 {
-                    Cell upperCell;
-                    Cell bottomCell;
+                    Pos upperCell;
+                    Pos bottomCell;
                     if (direction == Direction.Up)
                     {
                         //moving up - rows different, cols are the same
-                        upperCell = new Cell(row, col);
-                        bottomCell = new Cell(row + 1, col);
+                        upperCell = new Pos(row, col);
+                        bottomCell = new Pos(row + 1, col);
                     }
                     else
                     {
                         //moving down - rows different, cols are the same
-                        upperCell = new Cell(row-1, col);
-                        bottomCell = new Cell(row, col);
+                        upperCell = new Pos(row-1, col);
+                        bottomCell = new Pos(row, col);
                     }
                     if (IsSameValue(bottomCell, upperCell))
                     {
                         //merging up cells 
-                        Cell cellToMergeValue = upperCell;
-                        Cell cellToEmptyValue = bottomCell;
+                        Pos cellToMergeValue = upperCell;
+                        Pos cellToEmptyValue = bottomCell;
                         //merging down cells
                         if (direction == Direction.Down)
                         {
@@ -258,13 +258,13 @@ namespace Game2048.logic
                     col += coefficient)
                 {
                     //moving up - rows different, cols are the same
-                    Cell upperCell = new Cell(row, col);
-                    Cell bottomCell = new Cell(row + 1, col);
+                    Pos upperCell = new Pos(row, col);
+                    Pos bottomCell = new Pos(row + 1, col);
                     if (IsSameValue(bottomCell, upperCell))
                     {
                         //merging up cells 
-                        Cell cellToMergeValue = upperCell;
-                        Cell cellToEmptyValue = bottomCell;
+                        Pos cellToMergeValue = upperCell;
+                        Pos cellToEmptyValue = bottomCell;
                         //merging down cells
                         if (direction == Direction.Down)
                         {
@@ -285,12 +285,12 @@ namespace Game2048.logic
         }
 
 
-        public bool IsSameValue(Cell firstCell, Cell secondCell)
+        public bool IsSameValue(Pos firstCell, Pos secondCell)
         {
             return Data[firstCell.Row, firstCell.Col] == Data[secondCell.Row, secondCell.Col]
                && Data[firstCell.Row, firstCell.Col] != EmptyCellValue;
         }
-        private bool IsOnColsLimits(Cell movingCell, Cell targetMovingCell, Direction direction)
+        private bool IsOnColsLimits(Pos movingCell, Pos targetMovingCell, Direction direction)
         {
             if (direction == Direction.Up)
             {
@@ -303,22 +303,22 @@ namespace Game2048.logic
                        movingCell.Row < targetMovingCell.Row;
             }
         }
-        public void MoveCell(Cell movingCell, Cell targetMovingCell)
+        public void MoveCell(Pos movingCell, Pos targetMovingCell)
         {
             Data[targetMovingCell.Row, targetMovingCell.Col] = Data[movingCell.Row, movingCell.Col];
             SetCellEmpty(movingCell);
         }
-        public void SetCellValueMerged(Cell cell)
+        public void SetCellValueMerged(Pos cell)
         {
             Data[cell.Row, cell.Col] *= 2;
         }
 
-        public void SetCellEmpty(Cell cell)
+        public void SetCellEmpty(Pos cell)
         {
             Data[cell.Row, cell.Col] = EmptyCellValue;
         }
 
-        public void MergeCells(Cell cellToMergeValue, Cell cellToEmptyValue)
+        public void MergeCells(Pos cellToMergeValue, Pos cellToEmptyValue)
         {
             SetCellValueMerged(cellToMergeValue);
             SetCellEmpty(cellToEmptyValue);

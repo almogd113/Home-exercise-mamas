@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Game2048.logic
 {
-    public class Cell
+    public class Pos
     {
         public int Row
         { get; private set; }
@@ -12,7 +12,7 @@ namespace Game2048.logic
         public int Col
         { get; private set; }
 
-        public Cell(int row, int col)
+        public Pos(int row, int col)
         {
             Row = row;
             Col = col;

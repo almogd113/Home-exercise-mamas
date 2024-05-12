@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Game2048.logic
 {
-    class Game
+    public class Game
     {
         public Board GameBoard
         { get; private set; }
@@ -15,8 +15,7 @@ namespace Game2048.logic
         public int Points
         { get; protected set; }
 
-        //public Time
-        int winCellValue = 2048;
+        public int winCellValue = 32;
         public Game()
         {
             // initialize game data members
@@ -26,6 +25,7 @@ namespace Game2048.logic
             Points = 0;
         }
 
+   
         public void Move(Direction direction)
         {
             if (GameStatus == GameStatus.Idle)

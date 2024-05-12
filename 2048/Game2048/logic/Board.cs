@@ -22,6 +22,7 @@ namespace Game2048.logic
             _emptyCellsPosition = new List<Pos>();
             GetEmptyCells();
             MaxValueCellPos = new Pos(0, 0); //init 
+           
 
         }
         public Board(Board board)
@@ -291,11 +292,7 @@ namespace Game2048.logic
             return new Pos(-1, -1); //does not exist
 
         }
-        private bool canMove(Pos current, Pos next)
-        {
-            //check if there is an empty cell to move the next cell.
-            return Data[current.Row, current.Col] == EmptyCellValue && Data[next.Row, next.Col] != EmptyCellValue;
-        }
+   
      
         public int MergeVertically(Direction direction)
         {
@@ -394,6 +391,7 @@ namespace Game2048.logic
                         this.MergeCells(cellToMergeValue, cellToEmptyValue);
                         int valueCellMerged = GetCellValue(cellToMergeValue);
                         _pointPreMovement += valueCellMerged;
+                        AddCellToEmptyCellsList(cellToEmptyValue);
                         MaxValueCellPos = valueCellMerged > GetCellValue(MaxValueCellPos) ? cellToMergeValue : MaxValueCellPos;
 
 

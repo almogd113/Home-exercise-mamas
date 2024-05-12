@@ -15,7 +15,7 @@ namespace Game2048.Logic
         public int Points
         { get; protected set; }
 
-        public int winCellValue = 64;
+        public int WinCellValue = 2048;
         public Game()
         {
             // initialize game data members
@@ -60,7 +60,7 @@ namespace Game2048.Logic
         private bool IsWin()
         {
             //check if there is cell with the value 2048
-            return GameBoard.GetCellValue(GameBoard.MaxValueCellPos) >= winCellValue;
+            return GameBoard.MaxValueCell >= WinCellValue;
         }
 
         private bool TestMove()

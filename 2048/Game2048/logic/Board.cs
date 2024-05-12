@@ -10,7 +10,7 @@ namespace Game2048.Logic
         private const int Size = 4;
         private int _pointPreMovement;
         private List<Pos> _emptyCellsPosition;
-        public Pos MaxValueCellPos
+        public int MaxValueCell
         { get; private set; }
         public int[,] Data
         { get; protected set; }
@@ -21,7 +21,7 @@ namespace Game2048.Logic
             _pointPreMovement = 0;
             _emptyCellsPosition = new List<Pos>();
             GetEmptyCells();
-            MaxValueCellPos = new Pos(0, 0); //init 
+            MaxValueCell = 0; //init 
            
 
         }
@@ -30,7 +30,7 @@ namespace Game2048.Logic
             Data = board.Data;
             _pointPreMovement = board._pointPreMovement;
             _emptyCellsPosition = board._emptyCellsPosition;
-            MaxValueCellPos = board.MaxValueCellPos;
+            MaxValueCell = board.MaxValueCell;
             
         }
         public void Initalize()
@@ -53,7 +53,7 @@ namespace Game2048.Logic
 
             //set cell value
             Data[cellToSet.Row, cellToSet.Col] = rndCellValue;
-            MaxValueCellPos = rndCellValue > GetCellValue(MaxValueCellPos) ? cellToSet : MaxValueCellPos;
+            MaxValueCell = rndCellValue > MaxValueCell ? rndCellValue : MaxValueCell;
         }
 
         public void RemoveCellFromEmptyCellsList(int row, int col)
@@ -332,11 +332,8 @@ namespace Game2048.Logic
                         }
 
                         //merge cells operation
-                        this.MergeCells(cellToMergeValue, cellToEmptyValue);
-                        int valueCellMerged = GetCellValue(cellToMergeValue);
-                        AddCellToEmptyCellsList(cellToEmptyValue);
-                        _pointPreMovement += valueCellMerged;
-                        MaxValueCellPos = valueCellMerged > GetCellValue(MaxValueCellPos) ? cellToMergeValue : MaxValueCellPos;
+                        MergingCellFullOperation(cellToMergeValue, cellToEmptyValue);
+
                     }
 
                 }
@@ -385,11 +382,7 @@ namespace Game2048.Logic
                         }
 
                         //merge cells operation
-                        this.MergeCells(cellToMergeValue, cellToEmptyValue);
-                        int valueCellMerged = GetCellValue(cellToMergeValue);
-                        _pointPreMovement += valueCellMerged;
-                        AddCellToEmptyCellsList(cellToEmptyValue);
-                        MaxValueCellPos = valueCellMerged > GetCellValue(MaxValueCellPos) ? cellToMergeValue : MaxValueCellPos;
+                        MergingCellFullOperation(cellToMergeValue, cellToEmptyValue);
 
 
                     }
@@ -399,7 +392,14 @@ namespace Game2048.Logic
             return _pointPreMovement;
         }
 
-
+        private void MergingCellFullOperation(Pos cellToMergeValue, Pos cellToEmptyValue)
+        {
+            this.MergeCells(cellToMergeValue, cellToEmptyValue);
+            int valueCellMerged = GetCellValue(cellToMergeValue);
+            _pointPreMovement += valueCellMerged;
+            AddCellToEmptyCellsList(cellToEmptyValue);
+            MaxValueCell = valueCellMerged > MaxValueCell ? valueCellMerged : MaxValueCell;
+        }
         public bool IsSameValue(Pos firstCell, Pos secondCell)
         {
             return Data[firstCell.Row, firstCell.Col] == Data[secondCell.Row, secondCell.Col]

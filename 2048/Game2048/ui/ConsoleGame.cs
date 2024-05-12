@@ -74,7 +74,7 @@ namespace Game2048.UI
         public void WinMessage()
         {
             Console.WriteLine("Congratulations! you won!");
-            Console.WriteLine(string.Format("You've reached a {0} value cell", _game.winCellValue));
+            Console.WriteLine(string.Format("You've reached a {0} value cell", _game.WinCellValue));
             Console.WriteLine();
         }
         public void LoseMessage()
@@ -83,7 +83,30 @@ namespace Game2048.UI
             Console.WriteLine();
         }
 
-     
+        public static ConsoleKeyInfo ValidateInitInput()
+        {
+            while (true)
+            {
+                Console.WriteLine("start a game - enter spacebar '\n' " +
+                                  "end program enter ENTER");
+                ConsoleKeyInfo input = Console.ReadKey(true); // BLOCKING TO WAIT FOR INPUT
+
+                if (input.Key != ConsoleKey.Enter &&
+                     input.Key != ConsoleKey.Spacebar)
+                {
+                    Console.WriteLine("Press only ENTER or SPACE. Try again");
+                    continue;
+                }
+                return input;
+            }
+        }
+        public static void StartMessage()
+        {
+            Console.WriteLine("Welcome to the game 2048: ");
+            Console.WriteLine();
+
+        }
+
         private ConsoleColor GetNumberColor(int num)
         {
             switch (num)

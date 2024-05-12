@@ -99,15 +99,12 @@ namespace Game2048.logic
         }
 
         ////move functions:
-        ////public int Move(Direction direction)
-        ////{
-        ////    //move up
-
-        ////    //move down
-        ////    //move left
-        ////    //move right
-
-        ////}
+        public int Move(Direction direction)
+        {
+            int pointsForMove = direction == Direction.Up || direction == Direction.Down ? MoveVertically(direction) : MoveHorizantlly(direction);
+            SetValueRandomCell();
+            return pointsForMove;
+        }
 
         public int MoveVertically(Direction direction)
         {

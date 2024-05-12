@@ -35,9 +35,7 @@ namespace Game2048.logic
             SetValueRandomCell();
             SetValueRandomCell();
             SetValueRandomCell();
-            SetValueRandomCell();
-            SetValueRandomCell();
-            SetValueRandomCell();
+       
         }
 
         public void SetValueRandomCell()
@@ -249,27 +247,38 @@ namespace Game2048.logic
             int init = 0;
             int end = Data.GetLength(0)-1;
 
-            int coefficient = direction == Direction.Up ? 1 : -1;
+            int coefficient = direction == Direction.Left ? 1 : -1;
             //merging same cells
             for (int row = 0; row < Data.GetLength(0); row++)
             {
-                for (int col = direction == Direction.Up ? init : end;
-                    row + coefficient >= 0 && col + coefficient < Data.GetLength(0);
+                for (int col = direction == Direction.Left ? init : end;
+                    col + coefficient >= 0 && col + coefficient < Data.GetLength(0);
                     col += coefficient)
                 {
-                    //moving up - rows different, cols are the same
-                    Pos upperCell = new Pos(row, col);
-                    Pos bottomCell = new Pos(row + 1, col);
-                    if (IsSameValue(bottomCell, upperCell))
+                    Pos rightPos;
+                    Pos leftPos;
+                    //moving Right - rows are the same, cols are different
+                    if(direction == Direction.Right)
                     {
-                        //merging up cells 
-                        Pos cellToMergeValue = upperCell;
-                        Pos cellToEmptyValue = bottomCell;
-                        //merging down cells
-                        if (direction == Direction.Down)
+                        rightPos = new Pos(row, col);
+                        leftPos = new Pos(row, col - 1);
+                    }
+
+                    else
+                    {
+                        rightPos = new Pos(row, col + 1);
+                        leftPos = new Pos(row, col);
+                    }
+                    if (IsSameValue(rightPos, leftPos))
+                    {
+                        //merging Right cells 
+                        Pos cellToMergeValue = rightPos;
+                        Pos cellToEmptyValue = leftPos;
+                        //merging Left cells
+                        if (direction == Direction.Left)
                         {
-                            cellToMergeValue = bottomCell;
-                            cellToEmptyValue = upperCell;
+                            cellToMergeValue = leftPos;
+                            cellToEmptyValue = rightPos;
                         }
 
                         //merge cells operation

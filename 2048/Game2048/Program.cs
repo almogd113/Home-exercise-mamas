@@ -8,7 +8,8 @@ namespace Game2048
         {
             logic.Board board = new logic.Board();
             board.Initalize();
-            board.MoveVertically(logic.Direction.Down);
+            // board.MoveVertically(logic.Direction.Down); //works
+            board.MergeHorizontally(logic.Direction.Left);
 
         }
     }

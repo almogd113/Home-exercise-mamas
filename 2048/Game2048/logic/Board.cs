@@ -131,7 +131,7 @@ namespace Game2048.logic
                 for (int col = 0; col < Data.GetLength(0); col += 1)
                 {
 
-                    Pos firstEmptyCell = GetFirstEmptyCellInCol(col,direction);
+                    Pos firstEmptyCell = GetFirstEmptyCell(col, row ,direction);
                     Pos firstValuedCell = GetFirstValuedCellInCol(col, row, direction);
                     if ((firstValuedCell.Row != -1 && firstValuedCell.Col != -1) &&
                         (firstEmptyCell.Row >= 0 && firstEmptyCell.Row < Data.GetLength(0)))
@@ -142,31 +142,96 @@ namespace Game2048.logic
                             RemoveCellFromEmptyCellsList(firstEmptyCell.Row, firstEmptyCell.Col);
                             AddCellToEmptyCellsList(firstValuedCell);
                         }
-                        }
+                    }
                 }
             }
             return _pointPreMovement;
 
         }
-        private Pos GetFirstEmptyCellInCol(int col, Direction direction)
+
+        public int MoveHorizantlly(Direction direction)
+        {
+            //init merge:
+            _pointPreMovement = this.MergeHorizontally(direction);
+
+            //first movement:
+            //  setting data for loop
+            int init = 0;
+            int end = Data.GetLength(0) - 1;
+
+            int coefficient = direction == Direction.Left ? 1 : -1;
+
+            for (int row = 0; row < Data.GetLength(0); row++)
+            {
+                for (int col = direction == Direction.Left ? init : end;
+                    col + coefficient >= 0 && col + coefficient < Data.GetLength(0);
+                    col += coefficient)
+                {
+
+                    Pos firstEmptyCell = GetFirstEmptyCell(col,row, direction);
+                        Pos firstValuedCell = GetFirstValuedCellInRow(col, row, direction);
+                        if ((firstValuedCell.Row != -1 && firstValuedCell.Col != -1) &&
+                            (firstEmptyCell.Row >= 0 && firstEmptyCell.Row < Data.GetLength(0)))
+                        {
+                            if (IsOnColsLimits(firstValuedCell, firstEmptyCell, direction))
+                            {
+                                MoveCell(firstValuedCell, firstEmptyCell);
+                                RemoveCellFromEmptyCellsList(firstEmptyCell.Row, firstEmptyCell.Col);
+                                AddCellToEmptyCellsList(firstValuedCell);
+                            }
+                        }
+                    }
+
+                }
+            return _pointPreMovement;
+            }
+        
+        private Pos GetFirstEmptyCell(int col, int row, Direction direction)
         {
             //for Up
             int prevValueRowUp = 4; // default to start running on the list , does not exist
             //for Down
             int prevValueRowDown = -1; //default to start running on the list , does not exist
+
+            //for Right
+            int prevValueColRight = -1;
+
+            //for Left
+            int prevValueColLeft = 4;
             foreach (Pos item in _emptyCellsPosition)
             {
-                if (item.Col == col)
+                if (direction == Direction.Down || direction == Direction.Up)
                 {
-                    prevValueRowUp = item.Row < prevValueRowUp ? item.Row : prevValueRowUp;
-                    prevValueRowDown = item.Row > prevValueRowDown ? item.Row : prevValueRowDown;
+                    if (item.Col == col)
+                    {
+                        prevValueRowUp = item.Row < prevValueRowUp ? item.Row : prevValueRowUp;
+                        prevValueRowDown = item.Row > prevValueRowDown ? item.Row : prevValueRowDown;
+                    }
                 }
+
+                else //for Left and Right
+                {
+                    if(item.Row == row)
+                    {
+                        prevValueColRight = item.Col > prevValueColRight ? item.Col : prevValueColRight;
+                        prevValueColLeft = item.Col < prevValueColLeft ? item.Col : prevValueColLeft;
+                    }
+                }
+              
             }
-            Pos minEmptyCell = new Pos(prevValueRowUp, col);
-            Pos maxEmptyCell = new Pos(prevValueRowDown, col);
-            if(direction == Direction.Up)
-                return minEmptyCell;
-            return maxEmptyCell;
+            Pos minEmptyCellUp = new Pos(prevValueRowUp, col);
+            Pos maxEmptyCellDown = new Pos(prevValueRowDown, col);
+            Pos maxEmptyCellRight = new Pos(row, prevValueColRight);
+            Pos minEmptyCellLeft = new Pos(row, prevValueColLeft);
+
+            if (direction == Direction.Up)
+                return minEmptyCellUp;
+            else if (direction == Direction.Down)
+                return maxEmptyCellDown;
+            else if (direction == Direction.Right)
+                return maxEmptyCellRight;
+            else
+                return minEmptyCellLeft;
         }
 
         private Pos GetFirstValuedCellInCol(int col, int initRow, Direction direction)
@@ -182,6 +247,20 @@ namespace Game2048.logic
             }
 
             return new Pos(-1, -1); //does not exist
+        }
+
+        public Pos GetFirstValuedCellInRow(int initCol, int row, Direction direction)
+        {
+            int coefficient = direction == Direction.Left ? 1 : -1;
+            for (int col = initCol;
+            col >= 0 && col < Data.GetLength(0);
+            col += coefficient)
+            {
+                if (Data[row, col] != EmptyCellValue)
+                    return new Pos(row, col);
+            }
+            return new Pos(-1, -1); //does not exist
+
         }
         private bool canMove(Pos current, Pos next)
         {
@@ -306,11 +385,22 @@ namespace Game2048.logic
                 return movingCell.Col == targetMovingCell.Col &&
                        movingCell.Row > targetMovingCell.Row;
             }
-            else
+            else if(direction == Direction.Down)
             {
                 return movingCell.Col == targetMovingCell.Col &&
                        movingCell.Row < targetMovingCell.Row;
             }
+            else if(direction == Direction.Right)
+            {
+                return movingCell.Row == targetMovingCell.Row &&
+                    movingCell.Col < targetMovingCell.Col;
+            }
+            else
+            {
+                return movingCell.Row == targetMovingCell.Row &&
+                 movingCell.Col > targetMovingCell.Col;
+            }
+
         }
         public void MoveCell(Pos movingCell, Pos targetMovingCell)
         {

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Game2048.ui
+namespace Game2048.UI
 {
     public class ConsoleGame
     {
         private const int EmptyCellValue = 0;
-        private logic.Game _game;
-        public ConsoleGame(logic.Game game)
+        private Logic.Game _game;
+        public ConsoleGame(Logic.Game game)
         {
             _game = game;
         }
@@ -21,14 +21,14 @@ namespace Game2048.ui
                 Console.Write("| ");
                 for (int col = 0; col < _game.GameBoard.Data.GetLength(1); col++)
                 {
-                    if (_game.GameBoard.GetCellValue(new logic.Pos(row, col)) == EmptyCellValue)
+                    if (_game.GameBoard.GetCellValue(new Logic.Pos(row, col)) == EmptyCellValue)
                     {
                         const string empty = " ";
                         Console.Write(empty.PadRight(4));
                     }
                     else
                     {
-                        int value = _game.GameBoard.GetCellValue(new logic.Pos(row, col));
+                        int value = _game.GameBoard.GetCellValue(new Logic.Pos(row, col));
                         ConsoleColor consoleColor = this.GetNumberColor(value);
                         Console.ForegroundColor = consoleColor;
                         Console.Write(value.ToString().PadRight(4));

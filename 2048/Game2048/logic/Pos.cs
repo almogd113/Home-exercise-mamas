@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Game2048.logic
+namespace Game2048.Logic
 {
     public class Pos
     {

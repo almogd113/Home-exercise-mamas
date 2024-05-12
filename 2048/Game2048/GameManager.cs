@@ -6,13 +6,13 @@ namespace Game2048
 {
     public class GameManager
     {
-        private logic.Game _game;
-        private ui.ConsoleGame _consoleGame;
+        private Logic.Game _game;
+        private UI.ConsoleGame _consoleGame;
 
         public GameManager()
         {
-            _game = new logic.Game();
-            _consoleGame = new ui.ConsoleGame(_game);
+            _game = new Logic.Game();
+            _consoleGame = new UI.ConsoleGame(_game);
 
         }
 
@@ -37,10 +37,10 @@ namespace Game2048
         public void StartGame()
         {
             _consoleGame.DisplayBoard(); //display the init board data
-            while (_game.GameStatus == logic.GameStatus.Idle)
+            while (_game.GameStatus == Logic.GameStatus.Idle)
             {
                 ConsoleKeyInfo userKey = _consoleGame.ValidateUserKeyInput();
-                logic.Direction userDirection = GetDirectionByKey(userKey);
+                Logic.Direction userDirection = GetDirectionByKey(userKey);
                 _game.Move(userDirection);
                 _consoleGame.DisplayBoard();
             }
@@ -53,10 +53,10 @@ namespace Game2048
         {
             switch(_game.GameStatus)
             {
-                case logic.GameStatus.Win:
+                case Logic.GameStatus.Win:
                     _consoleGame.WinMessage();
                     break;
-                case logic.GameStatus.Lose:
+                case Logic.GameStatus.Lose:
                     _consoleGame.LoseMessage();
                     break;
                 default:
@@ -64,23 +64,23 @@ namespace Game2048
                     break;
             }
         }
-        public logic.Direction GetDirectionByKey(ConsoleKeyInfo input)
+        public Logic.Direction GetDirectionByKey(ConsoleKeyInfo input)
         {
             switch (input.Key)
             {
                 case ConsoleKey.UpArrow:
-                    return logic.Direction.Up;
+                    return Logic.Direction.Up;
 
                 case ConsoleKey.DownArrow:
-                    return logic.Direction.Down;
+                    return Logic.Direction.Down;
 
                 case ConsoleKey.LeftArrow:
-                    return logic.Direction.Left;
+                    return Logic.Direction.Left;
 
                 case ConsoleKey.RightArrow:
-                    return logic.Direction.Right;
+                    return Logic.Direction.Right;
                 default:
-                    return logic.Direction.Up;
+                    return Logic.Direction.Up;
 
             }
         }

@@ -139,6 +139,8 @@ namespace Game2048.Logic
             int init = 0;
             int end = Data.GetLength(0)-1;
 
+            //init doesnt exist pos: 
+            int Unreachable = -1;
             int coefficient = direction == Direction.Up ? 1 : -1;
 
             for (int row = direction == Direction.Up ? init : end;
@@ -151,14 +153,13 @@ namespace Game2048.Logic
 
                     Pos firstEmptyCell = GetFirstEmptyCell(col, row ,direction);
                     Pos firstValuedCell = GetFirstValuedCellInCol(col, row, direction);
-                    if ((firstValuedCell.Row != -1 && firstValuedCell.Col != -1) &&
+                    if ((firstValuedCell.Row != Unreachable && firstValuedCell.Col != Unreachable) &&
                         (firstEmptyCell.Row >= 0 && firstEmptyCell.Row < Data.GetLength(0)))
                     {
                         if (IsOnColsLimits(firstValuedCell, firstEmptyCell, direction))
                         {
-                            MoveCell(firstValuedCell, firstEmptyCell);
-                            RemoveCellFromEmptyCellsList(firstEmptyCell.Row, firstEmptyCell.Col);
-                            AddCellToEmptyCellsList(firstValuedCell);
+                            this.MovingCellFullOperation(firstValuedCell, firstEmptyCell);
+
                         }
                     }
                 }
@@ -189,6 +190,8 @@ namespace Game2048.Logic
             int init = 0;
             int end = Data.GetLength(0) - 1;
 
+            int Unreachable = -1;
+
             int coefficient = direction == Direction.Left ? 1 : -1;
 
             for (int row = 0; row < Data.GetLength(0); row++)
@@ -200,14 +203,12 @@ namespace Game2048.Logic
 
                     Pos firstEmptyCell = GetFirstEmptyCell(col,row, direction);
                         Pos firstValuedCell = GetFirstValuedCellInRow(col, row, direction);
-                        if ((firstValuedCell.Row != -1 && firstValuedCell.Col != -1) &&
+                        if ((firstValuedCell.Row != Unreachable && firstValuedCell.Col != Unreachable) &&
                             (firstEmptyCell.Row >= 0 && firstEmptyCell.Row < Data.GetLength(0)))
                         {
                             if (IsOnColsLimits(firstValuedCell, firstEmptyCell, direction))
                             {
-                                MoveCell(firstValuedCell, firstEmptyCell);
-                                RemoveCellFromEmptyCellsList(firstEmptyCell.Row, firstEmptyCell.Col);
-                                AddCellToEmptyCellsList(firstValuedCell);
+                            this.MovingCellFullOperation(firstValuedCell, firstEmptyCell);
                             }
                         }
                     }
@@ -216,18 +217,26 @@ namespace Game2048.Logic
             return _pointPreMovement;
             }
         
+        private void MovingCellFullOperation(Pos firstValuedCell, Pos firstEmptyCell)
+        {
+            MoveCell(firstValuedCell, firstEmptyCell);
+            RemoveCellFromEmptyCellsList(firstEmptyCell.Row, firstEmptyCell.Col);
+            AddCellToEmptyCellsList(firstValuedCell);
+        }
         private Pos GetFirstEmptyCell(int col, int row, Direction direction)
         {
+            int UnpossibleReachedMaxValue = 4;
+            int UnPossibleReachedMinValue = -1;
             //for Up
-            int prevValueRowUp = 4; // default to start running on the list , does not exist
+            int prevValueRowUp = UnpossibleReachedMaxValue; // default to start running on the list , does not exist
             //for Down
-            int prevValueRowDown = -1; //default to start running on the list , does not exist
+            int prevValueRowDown = UnPossibleReachedMinValue; //default to start running on the list , does not exist
 
             //for Right
-            int prevValueColRight = -1;
+            int prevValueColRight = UnPossibleReachedMinValue;
 
             //for Left
-            int prevValueColLeft = 4;
+            int prevValueColLeft = UnpossibleReachedMaxValue;
             foreach (Pos item in _emptyCellsPosition)
             {
                 if (direction == Direction.Down || direction == Direction.Up)

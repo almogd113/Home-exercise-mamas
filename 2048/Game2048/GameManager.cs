@@ -28,6 +28,7 @@ namespace Game2048
                     return;
                 case ConsoleKey.Spacebar:
                     StartGame();
+                    ManageGame();
                     break;
                 default:
                     return;
@@ -47,6 +48,7 @@ namespace Game2048
             
         }
 
+        
         public void FinalGameStatus()
         {
             switch(_game.GameStatus)

@@ -90,16 +90,19 @@ namespace Game2048.ui
         public void WinMessage()
         {
             Console.WriteLine("Congratulations! you won!");
-            Console.WriteLine(string.Format("You've reached a {} value cell", _game.winCellValue));
+            Console.WriteLine(string.Format("You've reached a {0} value cell", _game.winCellValue));
+            Console.WriteLine();
         }
         public void LoseMessage()
         {
             Console.WriteLine("Game over, you lost...");
+            Console.WriteLine();
         }
 
         public void StartMessage()
         {
             Console.WriteLine("Welcome to the game 2048: ");
+            Console.WriteLine();
 
         }
         private ConsoleColor GetNumberColor(int num)

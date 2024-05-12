@@ -44,7 +44,7 @@ namespace Game2048.logic
         {
             //random value and empty cell
             Random rnd = new Random();
-            int rndCellValue = rnd.NextDouble() > 1 ? 2 : 4;
+            int rndCellValue = rnd.NextDouble() > 0.5 ? 2 : 4;
             int rndCellIndex = this.GetRandomEmptyCellIndex();
 
             //remove cell from empty cells list
@@ -135,7 +135,8 @@ namespace Game2048.logic
 
                     Cell firstEmptyCell = GetFirstEmptyCellInCol(col,direction);
                     Cell firstValuedCell = GetFirstValuedCellInCol(col, row, direction);
-                    if (firstValuedCell.Row != -1 && firstValuedCell.Col != -1)
+                    if ((firstValuedCell.Row != -1 && firstValuedCell.Col != -1) &&
+                        (firstEmptyCell.Row >= 0 && firstEmptyCell.Row < Data.GetLength(0)))
                     {
                         if (IsOnColsLimits(firstValuedCell, firstEmptyCell, direction))
                         {
@@ -143,7 +144,7 @@ namespace Game2048.logic
                             RemoveCellFromEmptyCellsList(firstEmptyCell.Row, firstEmptyCell.Col);
                             AddCellToEmptyCellsList(firstValuedCell);
                         }
-                    }
+                        }
                 }
             }
             return _pointPreMovement;
@@ -172,11 +173,10 @@ namespace Game2048.logic
 
         private Cell GetFirstValuedCellInCol(int col, int initRow, Direction direction)
         {
-            int end = Data.GetLength(0)-1;
             int coefficient = direction == Direction.Up ? 1 : -1;
 
             for (int row = initRow;
-                row + coefficient >= 0 && row + coefficient < Data.GetLength(0);
+                row  >= 0 && row < Data.GetLength(0);
                 row += coefficient)
             {
                 if (Data[row, col] != EmptyCellValue)

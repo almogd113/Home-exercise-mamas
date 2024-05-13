@@ -15,7 +15,9 @@ namespace Game2048.Logic
         public int Points
         { get; protected set; }
 
-        public const int WinCellValue = 2048;
+
+        public int WinCellValue
+            { get; private set; }
         public Game()
         {
             // initialize game data members
@@ -23,6 +25,7 @@ namespace Game2048.Logic
             GameBoard.Initalize();
             GameStatus = GameStatus.Idle;
             Points = 0;
+            WinCellValue = 2048;
         }
         public void Move(Direction direction)
         {

@@ -16,9 +16,7 @@ namespace Game2048
             Game = new Logic.Game();
             ConsoleGame = new UI.ConsoleGame(Game);
 
-        }
-
-       
+        }  
         public void StartGame()
         {
             ConsoleGame.DisplayBoard(); //display the init board data
@@ -29,11 +27,9 @@ namespace Game2048
                 Game.Move(userDirection);
                 ConsoleGame.DisplayBoard();
             }
-            FinalGameStatus();
-            
+            FinalGameStatus();  
         }
 
-        
         public void FinalGameStatus()
         {
             switch(Game.GameStatus)

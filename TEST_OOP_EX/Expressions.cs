@@ -68,7 +68,6 @@ namespace OOP_Exercise
         public string TensTranslator(int num)
         {
             return this.TensDict[num];
-
         }
 
         public string TenToTwentyTranslator(int num)
@@ -80,7 +79,6 @@ namespace OOP_Exercise
         public string TensMultiplersByPositionInNumber(ulong num)
         {
             return this.MultiplerTensBaseAccordingToPlace[num];
-
         }
 
     }

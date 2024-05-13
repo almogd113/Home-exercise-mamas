@@ -20,14 +20,11 @@ namespace OOP_Exercise
 
         public void Append(int value)
         {
-
             Node<int> node = new Node<int>(value);
             Last.Next = node;
             Last = Last.Next;
             this.SetMinNodeWhenAdding(node);
             this.SetMaxNodeWhenAdding(node);
-
-
         }
 
         public void Prepend(int value)
@@ -55,10 +52,7 @@ namespace OOP_Exercise
             SetMaxWhenRemoving(pointer.Next);
             pointer.Next = null;
             Last = pointer;
-
-
             return nodeValue;
-
         }
 
         public int Unqueue()
@@ -139,7 +133,6 @@ namespace OOP_Exercise
             }
             return result;
         }
-
         public Node<int> MergeSort(Node<int> head)
         {
             // check if head is null
@@ -216,7 +209,6 @@ namespace OOP_Exercise
         }
         public IEnumerable<int> ToList()
         {
-
             Node<int> current = Head;
             while (current != null)
             {

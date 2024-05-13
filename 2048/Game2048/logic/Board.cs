@@ -22,8 +22,6 @@ namespace Game2048.Logic
             _emptyCellsPosition = new List<Pos>();
             GetEmptyCells();
             MaxValueCell = 0; //init 
-           
-
         }
         public Board(Board board)
         {
@@ -31,7 +29,7 @@ namespace Game2048.Logic
             _pointPreMovement = board._pointPreMovement;
             _emptyCellsPosition = board._emptyCellsPosition;
             MaxValueCell = board.MaxValueCell;
-            
+
         }
         public void Initalize()
         {
@@ -109,7 +107,7 @@ namespace Game2048.Logic
         public int Move(Direction direction)
         {
             int pointsForMove = direction == Direction.Up || direction == Direction.Down ? MoveVertically(direction) : MoveHorizantlly(direction);
-            if(GetNumberEmptyCells() > 0)
+            if (GetNumberEmptyCells() > 0)
                 SetValueRandomCell();
             _pointPreMovement = 0;
             return pointsForMove;
@@ -125,7 +123,7 @@ namespace Game2048.Logic
             //first movement:
             //  setting data for loop
             int init = 0;
-            int end = Data.GetLength(0)-1;
+            int end = Data.GetLength(0) - 1;
 
             //init doesnt exist pos: 
             int Unreachable = -1;
@@ -139,7 +137,7 @@ namespace Game2048.Logic
                 for (int col = 0; col < Data.GetLength(0); col += 1)
                 {
 
-                    Pos firstEmptyCell = GetFirstEmptyCell(col, row ,direction);
+                    Pos firstEmptyCell = GetFirstEmptyCell(col, row, direction);
                     Pos firstValuedCell = GetFirstValuedCellInCol(col, row, direction);
                     if ((firstValuedCell.Row != Unreachable && firstValuedCell.Col != Unreachable) &&
                         (firstEmptyCell.Row >= 0 && firstEmptyCell.Row < Data.GetLength(0)))
@@ -189,22 +187,22 @@ namespace Game2048.Logic
                     col += coefficient)
                 {
 
-                    Pos firstEmptyCell = GetFirstEmptyCell(col,row, direction);
-                        Pos firstValuedCell = GetFirstValuedCellInRow(col, row, direction);
-                        if ((firstValuedCell.Row != Unreachable && firstValuedCell.Col != Unreachable) &&
-                            (firstEmptyCell.Row >= 0 && firstEmptyCell.Row < Data.GetLength(0)))
+                    Pos firstEmptyCell = GetFirstEmptyCell(col, row, direction);
+                    Pos firstValuedCell = GetFirstValuedCellInRow(col, row, direction);
+                    if ((firstValuedCell.Row != Unreachable && firstValuedCell.Col != Unreachable) &&
+                        (firstEmptyCell.Row >= 0 && firstEmptyCell.Row < Data.GetLength(0)))
+                    {
+                        if (IsOnColsLimits(firstValuedCell, firstEmptyCell, direction))
                         {
-                            if (IsOnColsLimits(firstValuedCell, firstEmptyCell, direction))
-                            {
                             this.MovingCellFullOperation(firstValuedCell, firstEmptyCell);
-                            }
                         }
                     }
-
                 }
-            return _pointPreMovement;
+
             }
-        
+            return _pointPreMovement;
+        }
+
         private void MovingCellFullOperation(Pos firstValuedCell, Pos firstEmptyCell)
         {
             MoveCell(firstValuedCell, firstEmptyCell);
@@ -238,13 +236,13 @@ namespace Game2048.Logic
 
                 else //for Left and Right
                 {
-                    if(item.Row == row)
+                    if (item.Row == row)
                     {
                         prevValueColRight = item.Col > prevValueColRight ? item.Col : prevValueColRight;
                         prevValueColLeft = item.Col < prevValueColLeft ? item.Col : prevValueColLeft;
                     }
                 }
-              
+
             }
             Pos minEmptyCellUp = new Pos(prevValueRowUp, col);
             Pos maxEmptyCellDown = new Pos(prevValueRowDown, col);
@@ -266,13 +264,12 @@ namespace Game2048.Logic
             int coefficient = direction == Direction.Up ? 1 : -1;
 
             for (int row = initRow;
-                row  >= 0 && row < Data.GetLength(0);
+                row >= 0 && row < Data.GetLength(0);
                 row += coefficient)
             {
                 if (Data[row, col] != EmptyCellValue)
                     return new Pos(row, col);
             }
-
             return new Pos(-1, -1); //does not exist
         }
 
@@ -289,13 +286,11 @@ namespace Game2048.Logic
             return new Pos(-1, -1); //does not exist
 
         }
-   
-     
         public int MergeVertically(Direction direction)
         {
             //  setting data for loop
             int init = 0;
-            int end = Data.GetLength(0)-1;
+            int end = Data.GetLength(0) - 1;
 
             int coefficient = direction == Direction.Up ? 1 : -1;
 
@@ -316,7 +311,7 @@ namespace Game2048.Logic
                     else
                     {
                         //moving down - rows different, cols are the same
-                        upperCell = new Pos(row-1, col);
+                        upperCell = new Pos(row - 1, col);
                         bottomCell = new Pos(row, col);
                     }
                     if (IsSameValue(bottomCell, upperCell))
@@ -345,7 +340,7 @@ namespace Game2048.Logic
         {
             //  setting data for loop
             int init = 0;
-            int end = Data.GetLength(0)-1;
+            int end = Data.GetLength(0) - 1;
 
             int coefficient = direction == Direction.Left ? 1 : -1;
             //merging same cells
@@ -358,7 +353,7 @@ namespace Game2048.Logic
                     Pos rightPos;
                     Pos leftPos;
                     //moving Right - rows are the same, cols are different
-                    if(direction == Direction.Right)
+                    if (direction == Direction.Right)
                     {
                         rightPos = new Pos(row, col);
                         leftPos = new Pos(row, col - 1);
@@ -412,12 +407,12 @@ namespace Game2048.Logic
                 return movingCell.Col == targetMovingCell.Col &&
                        movingCell.Row > targetMovingCell.Row;
             }
-            else if(direction == Direction.Down)
+            else if (direction == Direction.Down)
             {
                 return movingCell.Col == targetMovingCell.Col &&
                        movingCell.Row < targetMovingCell.Row;
             }
-            else if(direction == Direction.Right)
+            else if (direction == Direction.Right)
             {
                 return movingCell.Row == targetMovingCell.Row &&
                     movingCell.Col < targetMovingCell.Col;

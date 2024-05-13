@@ -64,7 +64,6 @@ namespace Game2048.UI
                 }
                 return input;
             }
-
         }
 
         public void PointsMessage()

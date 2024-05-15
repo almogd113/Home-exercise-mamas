@@ -8,6 +8,7 @@ namespace OOP_Exercise
     {
         private ulong _number;
         private int _len;
+        //private bool _isNegative;
 
         private Func<string> FullNumberWords;
 
@@ -20,7 +21,7 @@ namespace OOP_Exercise
         {
             _number = number;
             _len = (int)(Math.Log10(number) + 1);
-
+          //  _isNegative = isNegative;
             //default functions:
             this.FullNumberWords = this.ExpressNumber;
 
@@ -55,8 +56,8 @@ namespace OOP_Exercise
             }
             ulong numberProcess = _number;
 
-            if (numberProcess < 0)
-                FullNumberExpression += "minus";
+            //if (_isNegative)
+            //    FullNumberExpression += "minus";
             //run on every trio, express the number and determine which type of number by position in full number
             for (ulong i = calcTypeTens; i >= 1; i /= 1000)
             {

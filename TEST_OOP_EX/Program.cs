@@ -30,7 +30,7 @@ namespace OOP_Exercise
             //Node<int> min = linkedList.GetMinNode();
             //IEnumerable<int> a = linkedList.ToList();
 
-            NumericalExpression numericalExpression = new NumericalExpression(35);
+            NumericalExpression numericalExpression = new NumericalExpression(4);
             Console.WriteLine("numerical expression: " + numericalExpression.ToString());
             Console.WriteLine(NumericalExpression.SumLetters(numericalExpression));
         }

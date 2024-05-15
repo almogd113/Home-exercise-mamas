@@ -55,7 +55,8 @@ namespace OOP_Exercise
             }
             ulong numberProcess = _number;
 
-
+            if (numberProcess < 0)
+                FullNumberExpression += "minus";
             //run on every trio, express the number and determine which type of number by position in full number
             for (ulong i = calcTypeTens; i >= 1; i /= 1000)
             {
@@ -64,6 +65,8 @@ namespace OOP_Exercise
                 {
                     num = numberProcess / i; //three digit number
                 }
+                if (i == 100)
+                    i = 1;
                 string numString = GetValueMatchThreeDigitsPattern(num, i);
                 FullNumberExpression += numString;
                 numberProcess %= i; //moving to the next trio
@@ -121,7 +124,6 @@ namespace OOP_Exercise
         public static int SumLetters(ulong number)
         {
             NumericalExpression numericalExpression = new NumericalExpression(number);
-            Console.WriteLine(numericalExpression.ToString());
             string expressedNumber = numericalExpression.ToString().Replace(" ", "");
             int count = expressedNumber.Length;
             if (number > 0)

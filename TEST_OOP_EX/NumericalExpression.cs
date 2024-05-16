@@ -6,7 +6,7 @@ namespace OOP_Exercise
 {
     class NumericalExpression
     {
-        private ulong _number;
+        private long _number;
         private int _len;
         //private bool _isNegative;
 
@@ -15,9 +15,9 @@ namespace OOP_Exercise
         private Func<int, string> UnitysTranslator;
         private Func<int, string> TensTranslator;
         private Func<int, string> TenToTwentyTranslator;
-        private Func<ulong, string> TensMultiplersByPositionInNumber;
+        private Func<long, string> TensMultiplersByPositionInNumber;
         public string FullNumberExpression { get; private set; }
-        public NumericalExpression(ulong number)
+        public NumericalExpression(long number)
         {
             _number = number;
             _len = (int)(Math.Log10(number) + 1);
@@ -49,19 +49,20 @@ namespace OOP_Exercise
                 typeTens = 4; //thousands
             }
             //long calcTypeTens = (int)Math.Pow(10, typeTens - 1);
-            ulong calcTypeTens = 1;
+            long calcTypeTens = 1;
             for (int i = 0; i < typeTens; i++)
             {
                 calcTypeTens *= 10; //calc the max number in this type 
             }
-            ulong numberProcess = _number;
+            long numberProcess = _number;
 
-            //if (_isNegative)
-            //    FullNumberExpression += "minus";
+            if (numberProcess < 0)
+                FullNumberExpression += "minus ";
+            numberProcess = Math.Abs(numberProcess);
             //run on every trio, express the number and determine which type of number by position in full number
-            for (ulong i = calcTypeTens; i >= 1; i /= 1000)
+            for (long i = calcTypeTens; i >= 1; i /= 1000)
             {
-                ulong num = numberProcess;
+                long num = numberProcess;
                 if (i >= 1000) //trio calc
                 {
                     num = numberProcess / i; //three digit number
@@ -78,11 +79,11 @@ namespace OOP_Exercise
         {
             return FullNumberWords();
         }
-        public ulong GetValue()
+        public long GetValue()
         {
             return _number;
         }
-        private string GetValueMatchThreeDigitsPattern(ulong numberThreeDigits, ulong typeTens)
+        private string GetValueMatchThreeDigitsPattern(long numberThreeDigits, long typeTens)
         {
             //calc digits
             int firstDigit = (int)numberThreeDigits / 100;
@@ -98,7 +99,7 @@ namespace OOP_Exercise
             string secondDigitStr = "";
             string thirdDigitStr = "";
 
-            ulong  hundrends = 100;
+            long  hundrends = 100;
             Expressions expressions = new Expressions();
 
             if (firstDigit != 0)
@@ -122,7 +123,7 @@ namespace OOP_Exercise
                                this.TensMultiplersByPositionInNumber(typeTens); //full 
             return strNumber;
         }
-        public static int SumLetters(ulong number)
+        public static int SumLetters(long number)
         {
             NumericalExpression numericalExpression = new NumericalExpression(number);
             string expressedNumber = numericalExpression.ToString().Replace(" ", "");

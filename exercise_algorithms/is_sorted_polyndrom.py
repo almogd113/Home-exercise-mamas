@@ -4,6 +4,16 @@ def check_type_order(order_descending: bool, my_part_str: str) -> bool:
     sorted_version.sort(reverse=order_descending)
 
     # check equality between the versions
+    return get_bool_equal_strings(my_part_str, sorted_version)
+
+
+def check_type_order_2(order_descending: bool, my_part_str: str) -> bool:
+    sorted_version = sorted(my_part_str, reverse=order_descending)
+    # check equality between the versions
+    return get_bool_equal_strings(my_part_str, sorted_version)
+
+
+def get_bool_equal_strings(my_part_str: str, sorted_version: []) -> bool:
     length = len(my_part_str)
     for index in range(length):
         if sorted_version[index] != my_part_str[index]:
@@ -28,6 +38,7 @@ def is_sorted_polyndrom(my_str: str) -> bool:
     check_first_half_order = check_type_order(order_descending=False, my_part_str=first_half)
     second_half = my_str[int(len(my_str) / 2): len(my_str): 1]
     check_second_half_order = check_type_order(order_descending=True, my_part_str=second_half)
+
     return check_second_half_order and check_first_half_order
 
 

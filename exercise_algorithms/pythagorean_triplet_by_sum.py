@@ -3,9 +3,6 @@ from validation_input import validate_input_int
 
 
 def pythagorean_triplet_by_sum(my_sum: int) -> None:
-    a = 0
-    b = 0
-    c = 0
     # we have 3 numbers to get the sum, and they are supposed to fulfill the following condition:
     # a < b < c
     # worst case:
@@ -17,8 +14,8 @@ def pythagorean_triplet_by_sum(my_sum: int) -> None:
     # c - should be greater than sum / 3 and  to fulfill sum - a - b
     # c min is sum / 3 + 1
     check_any_answers = False
-    for a in range(int(my_sum / 3)):
-        for b in range(a + 1, int(my_sum / 3 + 1)):
+    for a in range(1, int(my_sum / 3)):
+        for b in range(a + 1, int(my_sum / 2 + 1)):
             c = my_sum - a - b
             check_pythagoras = math.pow(a, 2) + math.pow(b, 2) == math.pow(c, 2)
             if check_pythagoras:

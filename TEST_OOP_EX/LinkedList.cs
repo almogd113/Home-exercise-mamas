@@ -135,7 +135,8 @@ namespace OOP_Exercise
         }
         public Node<int> MergeSort(Node<int> head)
         {
-            // check if head is null
+            // If the list is empty or has only one element
+            // it returns the same list because a list of 0 or 1 elements is already sorted.
             if (head == null || head.Next == null)
             {
                 return head;

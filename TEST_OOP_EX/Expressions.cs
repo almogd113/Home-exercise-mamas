@@ -10,7 +10,7 @@ namespace OOP_Exercise
         public Dictionary<int, string> TensDict { get; private set; } //10-100 
         public Dictionary<int, string> TenToTwentyDict { get; private set; } // 11-19
 
-        public Dictionary<ulong, string> MultiplerTensBaseAccordingToPlace { get; private set; } //houndrends, thousends....
+        public Dictionary<long, string> MultiplerTensBaseAccordingToPlace { get; private set; } //houndrends, thousends....
         public Expressions()
         {
             OnesDict = new Dictionary<int, string>();
@@ -48,7 +48,7 @@ namespace OOP_Exercise
             TenToTwentyDict.Add(18, "Eighteen ");
             TenToTwentyDict.Add(19, "Nineteen ");
 
-            MultiplerTensBaseAccordingToPlace = new Dictionary<ulong, string>();
+            MultiplerTensBaseAccordingToPlace = new Dictionary<long, string>();
             MultiplerTensBaseAccordingToPlace.Add(1, "");
             MultiplerTensBaseAccordingToPlace.Add(10, "");
             MultiplerTensBaseAccordingToPlace.Add(100, "Hundreds ");
@@ -68,7 +68,6 @@ namespace OOP_Exercise
         public string TensTranslator(int num)
         {
             return this.TensDict[num];
-
         }
 
         public string TenToTwentyTranslator(int num)
@@ -77,10 +76,9 @@ namespace OOP_Exercise
         }
 
 
-        public string TensMultiplersByPositionInNumber(ulong num)
+        public string TensMultiplersByPositionInNumber(long num)
         {
             return this.MultiplerTensBaseAccordingToPlace[num];
-
         }
 
     }

@@ -1,0 +1,14 @@
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\bin\Debug\netcoreapp3.1\Game2048.exe
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\bin\Debug\netcoreapp3.1\Game2048.deps.json
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\bin\Debug\netcoreapp3.1\Game2048.runtimeconfig.json
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\bin\Debug\netcoreapp3.1\Game2048.runtimeconfig.dev.json
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\bin\Debug\netcoreapp3.1\Game2048.dll
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\bin\Debug\netcoreapp3.1\Game2048.pdb
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\obj\Debug\netcoreapp3.1\Game2048.csproj.AssemblyReference.cache
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\obj\Debug\netcoreapp3.1\Game2048.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\obj\Debug\netcoreapp3.1\Game2048.AssemblyInfoInputs.cache
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\obj\Debug\netcoreapp3.1\Game2048.AssemblyInfo.cs
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\obj\Debug\netcoreapp3.1\Game2048.csproj.CoreCompileInputs.cache
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\obj\Debug\netcoreapp3.1\Game2048.dll
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\obj\Debug\netcoreapp3.1\Game2048.pdb
+C:\Users\almog\source\repos\Home-exercise-mamas\2048\Game2048\obj\Debug\netcoreapp3.1\Game2048.genruntimeconfig.cache

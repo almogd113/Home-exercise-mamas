@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "yPdnVEnoeX3Gsydc7Cuuy5qg218jhHWs3NpGC/zdg7dC1XMqY+juNAuPwSQD9qmnt0zLHL2o9eBDUZYKR/ASGw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\almog\\source\\repos\\Home-exercise-mamas\\2048\\Game2048\\Game2048.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\almog\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.25\\microsoft.netcore.app.host.win-x64.3.1.25.nupkg.sha512"
+  ],
+  "logs": []
+}
